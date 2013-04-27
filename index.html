@@ -466,6 +466,14 @@ $make install-gaia
 				]
 			});
 
+			function installMe() {
+				if (navigator.mozApps) {
+					navigator.mozApps.install('/manifest.webapp');
+				}
+			}
+
+			document.getElementById('foxtail').addEventListener('click', installMe);
+
 		</script>
 
 	</body>
