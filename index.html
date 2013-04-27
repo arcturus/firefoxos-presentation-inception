@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Yahoo! Hack Day: Firefox OS development!</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/ffos.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section>
+					<h1>Firefox OS <br/>development</h1>
+					<div id="foxtail"></div>
+					<p></p>
+					<p>Francisco Jordano</p>
+					<p></p>
+					<sub>@mepartoconmigo</sub>
+				</section>
+
+				<section>
+					<section>
+						<h2>Say hello to the World!</h2>
+						<p>It's been a while, but after some of intense work, <b>Firefox OS</b> is here!</p>
+						<img src="img/firefox-phone.png"></img>
+					</section>
+					<section>
+						<h2>Partners phones almost here!</h2>
+						<p>In MWC 2013 we saw some phones</p>
+						<img class="with-border" src="img/zte_open.jpg"></img>
+					</section>
+					<section>
+						<h2>Partners phones almost here!</h2>
+						<p>From different partners</p>
+						<img class="with-border" src="img/alcatel.jpg"></img>
+					</section>
+					<section>
+						<h2>Say hello to the devices!</h2>
+						<p><b>Geeksphone</b> already selling developer preview phones!</p>
+						<img src="img/geeksphone.png"></img>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Why Firefox OS is so cool?</h2>
+						<p>It's really open source!</p>
+						<p>Gecko (the backend): <a href="https://github.com/mozilla-b2g/B2G" target="_blank">https://github.com/mozilla-b2g/B2G</a></p>
+						<p>Gaia (the frontend): <a href="https://github.com/mozilla-b2g/gaia" target="_blank">https://github.com/mozilla-b2g/gaia</a></p>
+					</section>
+					<section>
+						<h2>Why Firefox OS is so cool?</h2>
+						<p>The Web Is The Platform \o/</p>
+						<img src="img/love_the_web.jpg"></img>
+						<p><a href="http://bradfrostweb.com/blog/web/responsive-web-design-missing-the-point/">http://bradfrostweb.com/blog/web/responsive-web-design-missing-the-point/</a></p>
+					</section>
+					<section>
+						<h2>Why Firefox OS is so cool?</h2>
+						<p>Born to made the web a better place</p>
+						<img src="img/mozilla-ow.jpg"></img>
+					</section>
+					<section>
+						<h2>Why Firefox OS is so cool?</h2>
+						<p>Yes ... <strong>everything is HTML + JS + CSS</strong></p>
+						<p><img src="img/html5_css_javascript.png"></img></p>
+					</section>
+					<section>
+						<h2>Why Firefox OS is so cool</h2>
+						<p>Everything ... from the window system</p>
+						<p class="fragment">... till the browser</p>
+						<img class="fragment" style="padding-top:-300px" src="img/browser_inception.png"></img>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Let's get started</h2>
+						<p>So, what do I need to know to start developing for <strong>Firefox OS</strong></p>
+						<p class="fragment">New programming languages?</p>
+						<p class="fragment">New application life cycles?</p>
+						<p class="fragment">Latest programming paradigm teached in Nepal?</p>
+					</section>
+					<section>
+						<h2>... well no ...</h2>
+						<p>Remember we are creating <span style="text-decoration:line-through">apps</span><br/> <strong>web apps</strong>, that are not really different to the webs you are already creating!</p>
+						<p>Yes, the Web is <b>native</b> in Firefox OS</p>
+					</section>
+					<section>
+						<h2><i>Declare</i> your apps through the webapp manifest</h2>
+						<pre>
+							<code contenteditable>
+{
+    "version": "1",
+    "name": "Firefox OS Boilerplate App",
+    "launch_path": "/Firefox-OS-Boilerplate-App/index.html",
+    "description": "Boilerplate Firefox OS app with example use cases to get started",
+    "icons": {
+        "64": "/Firefox-OS-Boilerplate-App/images/logo64.png",
+        "128": "/Firefox-OS-Boilerplate-App/images/logo128.png"
+    },
+    "developer": {
+        "name": "Robert Nyman",
+        "url": "http://robertnyman.com"
+    },
+    "installs_allowed_from": ["*"],
+    "default_locale": "en",
+    "permissions": {
+        "desktop-notification": {
+            "description" : "To show notifications"
+        },
+        "geolocation": {
+            "description" : "Marking out user location"
+        }
+    }
+}
+							</code>
+						</pre>
+						<p><pre>application/x-web-app-manifest+json</pre></p>
+					</section>
+					<section>
+						<h2> ... just that?</h2>
+						<p>Almost! We can choose how to distribute our web apps</p>
+						<p class="fragment"><strong>Hosted apps</strong>: All your files belongs ... to your self</p>
+						<p class="fragment"><strong>Packaged apps</strong>: You pack everything you need on a zip file that lives on the phone</p>
+					</section>
+					<section>
+						<h2>Beware about safety!</h2>
+						<img style="float:left" src="img/great_power.jpg"></img>
+						<p style="padding-top:250px">Permissions, needed for your app, but thinking about the user</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>New set of Web APIs</h2>
+						<p>To power you apps, to give you control over new hardware!</p>
+						<p>Of course to be standarised by W3C</p>
+					</section>
+					<section>
+						<h2>Dialer api</h2>
+						<pre>
+						<code contenteditable>
+var call = navigator.mozTelephony.dial('555-333-222-666');
+call.onconnected = function onConnected(evt) {
+	console.log('Better start to speak now');
+};
+call.ondisconnected = function onDisconnected(evt) {
+	console.log('Call too long, dude, your bill is getting a bit crazy');
+};
+call.onerror = function onError(evt) {
+	console.log('This is embarrassing');
+};
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h2>SMS api</h2>
+						<pre>
+						<code contenteditable>
+var sms = navigator.mozMobileMessage.send('555-333-222-666', 
+	"Mum I'm OK, I finished all the vegies");
+sms.onsucces = function onSuccess(evt) {
+	console.log('Now your mum can go to sleep happy');
+};
+sms.onerror = function onError(evt) {
+	console.log('Problems ahead');
+};
+							</code>
+						</pre>
+					</section>
+
+					<section>
+						<h2>Device Storage api</h2>
+						<pre>
+						<code contenteditable>
+var deviceStorage = navigator.getDeviceStorage('/books');
+var request = deviceStorage.get('Gone With The Wind.ebook');
+request.onsuccess = function onSuccess(evt) {
+	//request.result is an File object ...
+};
+
+var request = deviceStorage.delete('horrible_profile_photo.jpg');
+request.onerror = function onError(evt) {
+	console.log('Deal with it dude');
+}
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h2>Lots of new APIS</h2>
+						<p>Track them:</p>
+						<p><a href="https://developer.mozilla.org/en-US/docs/WebAPI" target="_blank">https://developer.mozilla.org/en-US/docs/WebAPI</a></p>
+						<p class="fragment"> ... and some almost ready to land like webRTC</p>
+					</section>
+					
+				</section>
+
+				<section>
+					<section>
+						<h2>How do we start creating our web apps?</h2>
+						<p>Well, I told you we are in the web, you know better than me!</p>
+						<p>Let's follow the Firefox OS Boilerplate App by Rober Nyman</p>
+						<p><a href="https://github.com/robnyman/Firefox-OS-Boilerplate-App" target="_blank">https://github.com/robnyman/Firefox-OS-Boilerplate-App</a></p>
+					</section>
+					<section>
+						<h2>My preferred way of working</h2>
+						<p>Browser (Nightly version) ⇒ Firefox OS Simulator ⇒ Device</p>
+					</section>
+
+					<section>
+						<h2>Trying first in Firefox Nighlty</h2>
+						<p>Same engine than runs in the phone!</p>
+						<p>Lot of tools for development</p>
+						<p>Mozilla is mocking the APIs not supported</p>
+					</section>
+
+					<section>
+						<h2>Need some Web APIs? Try the Firefox OS simulator</h2>
+						<p>Yesterday was released a new version of the simulator: 3.0pre8 \o/</p>
+						<ul>
+							<li><a href="https://ftp.mozilla.org/pub/mozilla.org/labs/r2d2b2g/r2d2b2g-windows.xpi">Windows</a></li>
+							<li><a href="https://ftp.mozilla.org/pub/mozilla.org/labs/r2d2b2g/r2d2b2g-mac.xpi">Mac</a></li>
+							<li><a href="https://ftp.mozilla.org/pub/mozilla.org/labs/r2d2b2g/r2d2b2g-linux.xpi">Linux</a></li>
+						</ul>
+						<p>Allow us to try our app running on Gaia</p>
+					</section>
+
+					<section>
+						<h2>... if possible ...</h2>
+						<p>Always try on the device</p>
+						<p></p>
+						<p>... and remember, there could be different devices with different form factors, memory, processor ...</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Tips, tricks and magic</h2>
+						<img src="img/magic.jpg"></img>
+					</section>
+					<section>
+						<h2>The London Underground problem</h2>
+						<p>Now more than ever we need to be aware of our users going offline</p>
+						<p>We have tools to make our web apps work offline, like <strong>packaged apps</strong> or old friends like <strong>app cache</strong> (apps with app cache can declare it on the application manifest)</p>
+					</section>
+					<section>
+						<h2>The London Underground problem</h2>
+						<p>But also we should be aware of the volatility of the connection on a mobile device!</p>
+						<pre>
+						<code contenteditable>
+var amIOnline = navigator.onLine;
+document.body.addEventListener('offline', function onOffline(evt) {
+	alert('Hello dear user, you lost your connection');
+});
+document.body.addEventListener('online', function onLine(evt) {
+	alert('We are back in business!');
+})
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h2>Sharing information across applications</h2>
+						<p>Our web app cannot do everything, but can use applications installed for it's goal</p>
+						<p>Hello <strong>Web Activites</strong></p>
+						<pre>
+						<code contenteditable>
+"activities": {
+    "pick": {
+      "filters": {
+        "type": ["webcontacts/contact","webcontacts/email"]
+       },
+      "disposition": "inline",
+      "href": "/contacts/index.html?pick",
+      "returnValue": true
+    }
+}
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h2>Sharing information across applications</h2>
+						<p>Asking for a contact</p>
+						<pre>
+						<code contenteditable>
+var activity = new MozActivity({
+  name: 'pick',
+  data: {
+    type: 'webcontacts/contact'
+  }
+});
+activity.onsuccess = function onSuccess() { 
+	var contact = this.result;
+	console.log(contact.name);
+};
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h2>Sharing information across applications</h2>
+						<p>Offering a contact</p>
+						<pre>
+						<code contenteditable>
+window.navigator.mozSetMessageHandler('activity', function activityHandler(activity) {
+	activity.postSuccess({contact: {
+		'name': 'Pedro'
+	}});
+});
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h2>If you like Firefox OS UX ...</h2>
+						<p><a href="http://www.buildingfirefoxos.com">BuildingFirefoxOS.com</a> is the design guide we follow</p>
+						<img src="img/building_blocks.jpg"></img>
+					</section>
+					<section>
+						<h2>More goodies: identity!</h2>
+						<p>Integration with <b>Mozilla Persona</b></p>
+						<pre>
+						<code contenteditable>
+var currentUser = 'bob@example.com';
+
+navigator.mozid.watch({
+  loggedInUser: currentUser,
+  onlogin: function(assertion) {
+    console.log('Hello ' + currentUser);
+  },
+  onlogout: function() {
+    console.log('We are alone and devastated');
+  }
+});
+							</code>
+						</pre>
+						<p><a href="https://developer.mozilla.org/en-US/docs/Persona/Quick_setup">https://developer.mozilla.org/en-US/docs/Persona/Quick_setup</a></p>
+					</section>
+					<section>
+						<h2>... and even more goodies: Payments!</h2>
+						<p>(even integrated with user bills in some countries)</p>
+						<pre>
+						<code contenteditable>
+var request = navigator.mozPay([signedJWT1, signedJWTn]);
+request.onsuccess = function onSuccess() {
+	console.log('Payment succesfully completed \o/');
+};
+request.onerror = function onError() {
+	console.log('Upps! This is embarrassing');
+}
+							</code>
+						</pre>
+						<p><a href="http://blog.digital.telefonica.com/2013/04/09/mozilla-web-payments-api/">http://blog.digital.telefonica.com/2013/04/09/mozilla-web-payments-api/</a></p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Web App Distribution</h2>
+						<p>Again breaking the way the market works</p>
+						<p>Freedom for the developer and the user</p>
+						<pre>
+						<code contenteditable>
+var request = navigator.mozApps.install("http://robnyman.github.com/Firefox-OS-Boilerplate-App/manifest.webapp");
+request.onsuccess = function() {
+  // great - display a message, or redirect to a launch page
+};
+request.onerror = function() {
+  // whoops - this.error.name has details
+};
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h2>Web App Distribution</h2>
+						<p>But still keeping the traditional model</p>
+						<p><a href="https://marketplace.mozilla.org">https://marketplace.mozilla.org</a></p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>@ladybenko: our guest star</h2>
+						<p>Recover soon!!</p>
+						<p>She will be demoing soon TU|Me for Firefox OS</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Last thing!</h2>
+						<p>Collaborate with Firefox OS!</p>
+						<pre>
+						<code contenteditable>
+$git clone git://github.com/mozilla-b2g/gaia.git
+$cd gaia
+$make install-gaia
+							</code>
+						</pre>
+						<ul>
+							<li>Mailing lists: https://lists.mozilla.org/listinfo/dev-gaia , https://lists.mozilla.org/listinfo/dev-b2g</li>
+							<li>IRC irc.mozilla.org: #gaia, #b2g, #webapi, #openwebapps</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<h2>Thank you!</h2>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,17 @@
+{
+    "version": "1",
+    "name": "Yahoo! Hack Day: Firefox OS development",
+    "launch_path": "/index.html",
+    "description": "Presentation for the workhsop Firefox OS development during Yahoo Hack Day London",
+    "icons": {
+        "64": "/images/logo64.png",
+        "128": "/images/logo128.png"
+    },
+    "developer": {
+        "name": "Francisco Jordano",
+        "url": "http://www.ardeenelinfierno.com/yahoo-hackday-london/firefoxos"
+    },
+    "installs_allowed_from": ["*"],
+    "default_locale": "en"
+}
+              

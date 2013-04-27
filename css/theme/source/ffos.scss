@@ -1,0 +1,39 @@
+/**
+ * A simple theme for reveal.js presentations.
+ *
+ * Based on theme: simple by Owen Versteeg, https://github.com/StereotypicalApps. It is MIT licensed.
+ * reveal.js is Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+
+// Include theme-specific fonts
+@import url(https://github.com/mozilla-b2g/moztt/blob/master/MozTT/MozTT-Medium.ttf?raw=true);
+
+// Override theme settings (see ../template/settings.scss)
+$mainFont: 'Lato', sans-serif;
+$mainColor: #FFF;
+$headingFont: 'News Cycle', Impact, sans-serif;
+$headingColor: #F5872A;
+$headingTextShadow: none;
+$headingTextTransform: none;
+$backgroundColor: #0096DD;
+$linkColor: #FA6400;
+$linkColorHover: lighten( $linkColor, 20% );
+$selectionBackgroundColor: rgba(0, 0, 0, 0.99);
+
+
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+.with-border {
+  border: 2px solid black!important;
+}
